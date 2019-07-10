@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var fun = function(){
+            alert('方法1 ！');
+        }
+    </script>
+</head>
+<body>
+    /*<!-- 通过事件调用函数 方法1  -->*/
+   <img id="light" src="images/off.gif" onclick="fun()">
+
+   <img id="light2" src="images/off.gif">
+
+    <h1 id="title">大哥 大哥 别杀我</h1>
+    <script>
+       /*var title = document.getElementById("title");
+       alert("我要换内容了");
+       title.innerHTML = "你过来了呀 ！ ";*/
+    </script>
+    <script>
+        /*通过事件调用函数 方法2*/
+        var light2 = document.getElementById("light2");
+        var bool = false;//灯是咩的
+        // 绑定事件
+        light2.onclick = function(){
+            if(bool == true){
+                light2.src = "images/off.gif";
+                bool = false;
+            }else{
+                light2.src = "images/on.gif";
+                bool = true;
+            }
+        };
+    </script>
+</body>
+</html>

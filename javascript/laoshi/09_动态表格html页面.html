@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态表格</title>
+
+    <style>
+        table{
+            border: 1px solid;
+            margin: auto;
+            width: 500px;
+        }
+
+        td,th{
+            text-align: center;
+            border: 1px solid;
+        }
+        div{
+            text-align: center;
+            margin: 50px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div>
+    <input type="text" id="id" placeholder="请输入编号">
+    <input type="text" id="name"  placeholder="请输入姓名">
+    <input type="text" id="gender"  placeholder="请输入性别">
+    <input type="button" value="添加" id="btn_add">
+
+</div>
+
+
+    <table>
+        <caption>学生信息表</caption>
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>操作</th>
+        </tr>
+
+        <tr>
+            <td>1</td>
+            <td>令狐冲</td>
+            <td>男</td>
+            <td><a href="javascript:void(0)" onclick="delTr(this)">删除</a></td>
+        </tr>
+
+        <tr>
+            <td>2</td>
+            <td>任我行</td>
+            <td>男</td>
+            <td><a href="javascript:void(0)" onclick="delTr(this)">删除</a></td>
+        </tr>
+
+        <tr>
+            <td>3</td>
+            <td>岳不群</td>
+            <td>?</td>
+            <td><a href="javascript:void(0)" onclick="delTr(this)">删除</a></td>
+        </tr>
+
+
+    </table>
+
+<script>
+
+
+document.getElementById("btn_add").onclick=function(){
+   //获取id文本框的值
+   var str_id=document.getElementById("id").value;
+   //获取name文本框的值
+    var str_name=document.getElementById("name").value;
+    //获取gender文本框的值
+    var str_gender=document.getElementById("gender").value;
+
+    //创建第一个td
+    var id_textNode=document.createTextNode(str_id);    //文本节点
+    var id_elementNode=document.createElement("td");    //td元素节点
+    id_elementNode.appendChild(id_textNode);
+
+    //创建第二个td
+    var name_textNode=document.createTextNode(str_name);    //文本节点
+    var name_elementNode=document.createElement("td");    //td元素节点
+    name_elementNode.appendChild(name_textNode);
+
+    //创建第三个td
+    var gender_textNode=document.createTextNode(str_gender);    //文本节点
+    var gender_elementNode=document.createElement("td");    //td元素节点
+    gender_elementNode.appendChild(gender_textNode);
+
+    //创建第四个td
+    var del_textNode=document.createTextNode("删除");
+    var a_elementNode=document.createElement("a");
+    a_elementNode.setAttribute("href","javascript:void(0)");
+    a_elementNode.setAttribute("onclick","delTr(this)");
+    a_elementNode.appendChild(del_textNode);
+    var del_element=document.createElement("td");
+    del_element.appendChild(a_elementNode);
+
+    //创建tr
+    var tr_elementNode=document.createElement("tr");
+    tr_elementNode.appendChild(id_elementNode);
+    tr_elementNode.appendChild(name_elementNode);
+    tr_elementNode.appendChild(gender_elementNode);
+    tr_elementNode.appendChild(del_element);
+
+
+    document.getElementsByTagName("table")[0].appendChild(tr_elementNode);
+
+}
+
+    /**
+     * 删除当前行
+     * @param obj
+     */
+    function delTr(obj){
+        var table=obj.parentNode.parentNode.parentNode;
+       var tr= obj.parentNode.parentNode;
+       table.removeChild(tr);
+    }
+</script>
+
+</body>
+</html>

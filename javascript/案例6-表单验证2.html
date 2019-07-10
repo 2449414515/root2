@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册页面</title>
+    <style>
+        #table{
+            margin: 0px auto;
+        }
+        td{
+            padding:10px;
+        }
+
+        #username, #password {
+            width: 251px;
+            height: 32px;
+            line-height: 32px;
+            border: 1px solid #A6A6A6;
+            /*设置边框圆角*/
+            border-radius: 5px;
+            padding-left: 10px;
+        }
+
+        #btn_sub {
+            width: 150px;
+            height: 40px;
+            background-color: #FFD026;
+            border: 1px solid #FFD026;
+        }
+
+        #td_sub{
+            padding-left:100px
+        }
+
+        .error{
+            color:red;
+            vertical-align: middle;
+        }
+    </style>
+<script>
+    window.onload = function(){
+        document.getElementById("form").onsubmit = function () {
+            return checkUsername() && checkPassowrd();
+        }
+        document.getElementById("username").onblur = checkUsername;
+        document.getElementById("password").onblur = checkPassowrd;
+    }
+    function  checkUsername() {
+        var username = document.getElementById("username").value;
+        var reg_user = /^\w{6,12}$/;
+        var bool = reg_user.test(username);
+        var elementById = document.getElementById("s_username");
+        if(bool){
+            elementById.innerHTML = "<img height='25' width='35' src='img/gou.png'>"
+        }else{
+            elementById.innerHTML = "账号格式错误！";
+        }
+        return bool;
+    }
+    function checkPassowrd() {
+       var password = document.getElementById("password").value;
+       var reg_password = /^\w{6,12}$/;
+       var bool = reg_password.test(password);
+       var s_password = document.getElementById("s_password");
+       if(bool){
+           s_password.innerHTML = "<img height='25' width='25' src='img/gou.png'>"
+       }else{
+            s_password.innerText = "密码格式错误！";
+       }
+       return bool;
+    }
+</script>
+</head>
+<body>
+    <!--定义表单 form-->
+    <form action="#" id="form" method="get">
+        <table border="1px" id="table">
+            <tr>
+                <td><label for="username">用户名</label></td>
+                <td>
+                    <input type="text" name="username" id="username" placeholder="请输入用户名">
+                    <span id="s_username" class="error"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label for="password">密码</label></td>
+                <td>
+                    <input type="password" name="password" id="password" placeholder="请输入密码">
+                    <span id="s_password" class="error"></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"  id="td_sub"><input type="submit" id="btn_sub" value="注册"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

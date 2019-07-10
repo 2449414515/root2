@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <img src="images/1.jpg" width="100%" id="img">
+    <script>
+        var count = 1;
+        function fun() {
+            count++;
+            if(count > 3){
+                count = 1;
+            }
+            var img = document.getElementById("img");
+            img.src = "images/banner_"+count+".jpg";
+        }
+        setInterval(fun,2000);
+    </script>
+</body>
+</html>
+
+

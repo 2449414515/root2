@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <ul id="ul1">
+
+    </ul>
+
+
+<input type="button" value="添加" id="btn_add" />
+<input type="button" value="移除" id="btn_remove" />
+
+<script>
+
+    //为移除按钮添加事件
+    document.getElementById("btn_remove").onclick=function(){
+        //找到ul1
+        var ul_element=document.getElementById("ul1");
+
+       var first_li =document.getElementsByTagName("li")[0];
+
+       ul_element.removeChild(first_li);
+    }
+
+
+
+
+    //为添加按钮添加单击事件
+    document.getElementById("btn_add").onclick=function(){
+
+        //创建文本节点
+        var txt_node=document.createTextNode("这是一个li");
+
+        //创建元素节点
+        var li_element = document.createElement("li");
+
+        //将文本节点添加到元素节点下
+        li_element.appendChild(txt_node);
+
+        //获取到ul元素节点
+        var ul_element=document.getElementById("ul1");
+        ul_element.appendChild(li_element);
+    }
+</script>
+
+</body>
+</html>

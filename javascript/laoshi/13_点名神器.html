@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #currentName{
+            margin:0px auto;
+            width: 300px;
+            height:150px;
+            background-color: blue;
+            line-height: 150px;
+            text-align: center;
+            font-size: 56px;
+            color: #ffffff;
+            border-radius: 10px;
+
+        }
+
+        #btn_div{
+            text-align: center;
+        }
+
+        .box{
+            width: 150px;
+            height: 36px;
+            background-color: saddlebrown;
+            color:#ffffff;
+            border: 0px;
+        }
+
+        .gname{
+            border:1px solid blue;
+            width: 100px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            float: left;
+            margin: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="currentName">胡曾</div>
+<hr/>
+    <div id="btn_div">
+        <input type="button" value="开始" class="box" id="btn_start"/>
+        <input type="button" value="停止" class="box" id="btn_stop"/>
+    </div>
+
+
+    <div id="names">
+
+
+    </div>
+
+<script>
+    var names=["胡曾","李德恒","李德恒","徐翊钦","刘东","周承曦","林俊杰","朱琪雯","郭晶晶","葛靖","魏明罡","吴定鹏","舒东辉","周正","雷志恒","顾智","陈秋枫","刘绍凯","奚常智","舒小通","王浪","陈杰","王佳文","姚光乐","何应红","夏俊鹏","魏亮","聂立","王小康","严国号","黄昊泓","段咏","柏义杰","黄琦","王希贤","解雅斌","方念","曾文康","廖俊","鄢茂成","徐思龙","殷钪","王少勋","杨凯","余文龙","匡仁楷","朱欢","胡文哲","董皓皓","王永豪","陈胜","谢轶智","张雨兴","王浩明","严迪","胡家成","汪仕","刘凡","甄西涌","郭云飞","吴佳隆","田文涛","罗超","周良勋","汪伟峰","孔令辉","胡鑫荣","叶文楷","张航","向波","金鑫"];
+
+//动态生成71个学生的div
+    var content="";
+    for(var i=0; i<names.length; i++){
+        content+="<div class='gname' name='username'>"+names[i]+"</div>";
+    }
+
+    //将71个div加到id="names"的大div中
+    document.getElementById("names").innerHTML=content;
+
+    //为开始按钮添加点击事件
+    var idInterval;
+    document.getElementById("btn_start").onclick=function(){
+        idInterval= window.setInterval(genName,100);
+    }
+
+
+    //为停止按钮添加点击事件
+    document.getElementById("btn_stop").onclick=function(){
+        window.clearInterval(idInterval);
+    }
+
+
+
+    //随机产生用户名
+    function genName(){
+        //随机生产生数组下标
+        var index=Math.floor( Math.random()*(names.length));
+        //通过下标取出姓名
+        var name=names[index];
+        //显示用户名
+        document.getElementById("currentName").innerHTML=name;
+
+
+        //获取所有动态生成的用户名
+       var names_div= document.getElementsByName("username");
+
+       //清除所有的背景样式
+        for(var i=0; i<names.length; i++){
+
+                names_div[i].style.backgroundColor="";
+
+        }
+
+
+
+
+       for(var i=0; i<names.length; i++){
+           if(names_div[i].innerHTML==name) //如果随机产生的姓名，和姓名列表中的姓名相同
+           {
+               names_div[i].style.backgroundColor="yellow";
+           }
+       }
+    }
+
+</script>
+</body>
+</html>

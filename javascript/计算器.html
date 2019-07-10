@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .div_1{
+            width: 235px;
+            height: 100px;
+            border: 5px solid #ecfdff;
+            margin: 0px auto;
+            background-color:#FFFF00;
+        }
+        input[type=text]{
+            margin-left:48px;
+            width:130px;
+        }
+    </style>
+
+    <script>
+        var add = function(){
+            var unm1 = document.getElementById("unm1").value;
+            var yuns = document.getElementById("yuns").value;
+            var unm2 = document.getElementById("unm2").value;
+            if(isNaN(unm1)||isNaN(unm2)||unm1==""||unm2==""){
+                alert("请输入数字");
+            }
+            if(!("+" === yuns || "-" === yuns || "*" === yuns || "/")){
+                alert("小老弟运算符错误");
+            }
+            document.getElementById("result").value = result;
+        }
+    </script>
+</head>
+<body>
+   <div class="div_1">
+       <input type="text" name="unm1" placeholder="请输入要运算的数字:" id="unm1"><br>
+       <input type="text" name="yuns" placeholder="请输入运算符：+ - * /" id="yuns"><br>
+       <input type="text" name="unm2" placeholder="请输入要运算的数字:" id="unm2">
+       <input type="button" value="提交" onclick="add()">
+       <input type="text" placeholder="结果：" id="result"><br>
+   </div>
+</body>
+</html>

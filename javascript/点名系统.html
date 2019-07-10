@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #currentName{
+            margin: 0px auto;
+            width: 200px;
+            height: 150px;
+            background-color: #dcedff;
+            font-size: 50px;
+            text-align: center;
+            line-height: 150px;
+            color: white;
+            border-radius: 10px;
+        }
+        input[type=button]{
+            width: 100px;
+            height: 50px;
+            background-color: #84baff;
+            color: white;
+            border: 0px;
+        }
+        #but{
+            text-align: center;
+        }
+        .gname{
+            border:1px solid blue;
+            width: 100px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            float: left;
+            margin: 5px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+        <div id="currentName">王佳文</div>
+        <hr>
+        <div id="but">
+            <input type="button" value="提交" id="btn_start">
+            <input type="button" value="暂停" id="btn_stop">
+        </div>
+        <div id="divs"></div>
+        <script>
+
+            //创建所以学生
+            var count="";
+            var names=["胡曾","李德恒","徐翊钦","刘东","周承曦","林俊杰","朱琪雯","郭晶晶","葛靖","魏明罡","吴定鹏","舒东辉","周正","雷志恒","顾智","陈秋枫","刘绍凯","奚常智","舒小通","王浪","陈杰","王佳文","姚光乐","何应红","夏俊鹏","魏亮","聂立","王小康","严国号","黄昊泓","段咏","柏义杰","黄琦","王希贤","解雅斌","方念","曾文康","廖俊","鄢茂成","徐思龙","殷钪","王少勋","杨凯","余文龙","匡仁楷","朱欢","胡文哲","董皓皓","王永豪","陈胜","谢轶智","张雨兴","王浩明","严迪","胡家成","汪仕","刘凡","甄西涌","郭云飞","吴佳隆","田文涛","罗超","周良勋","汪伟峰","孔令辉","胡鑫荣","叶文楷","张航","向波","金鑫"];
+            for(var a = 0; a < names.length;a++){
+                count+="<div class='gname' name='divs'>"+names[a]+"</div>";
+            }
+            document.getElementById("divs").innerHTML = count;
+
+            //创建定时任务
+            var idInterval;
+            var abc = 0;
+            document.getElementById("btn_start").onclick=function(){
+                if(abc == 0){
+                    abc = 1;
+                    idInterval= window.setInterval(genName,100);
+                }
+            }
+            document.getElementById("btn_stop").onclick = function () {
+                idInterval = clearInterval(idInterval);
+                abc = 0;
+            }
+            function genName(){
+                //随机生产生数组下标
+                var index=Math.floor( Math.random()*(names.length));
+                //通过下标取出姓名
+                var name=names[index];
+                //显示用户名
+                document.getElementById("currentName").innerHTML=name;
+
+                var divArr = document.getElementsByName("divs");
+                for(var a = 0;a < divArr.length;a++){
+                    divArr[a].style.backgroundColor="";
+                    if(name == divArr[a].innerText){
+                        divArr[a].style.backgroundColor="yellow";
+                    }
+                }
+            }
+
+        </script>
+</body>
+</html>

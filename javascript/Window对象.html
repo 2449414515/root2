@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Window对象</title>
+    <script>
+     /*   Window:  窗口对象
+            1：创建
+            2：方法
+                a 与弹出方法相关的
+                    alert() 	显示带有一段消息和一个确认按钮的警告框。
+                    confirm() 	显示带有一段消息以及确认按钮和取消按钮的对话框。
+                        确定 true 取消 false
+                    prompt() 	显示可提示用户输入的对话框。
+                        可以得到用户输入的值
+                 b 关闭 打开
+                    close() 	关闭浏览器窗口。谁调用为关谁
+                    open() 	打开一个新的浏览器窗口或查找一个已命名的窗口。
+
+                 c 定时器 创建定时器他们有一个返回值 返回的是一个唯一标识 id
+                 一次
+                 setTimeout() 	在指定的毫秒数后调用函数或计算表达式。
+                 clearTimeout() 	取消由 setTimeout() 方法设置的 timeout。
+
+                循环多次
+                 setInterval() 	按照指定的周期（以毫秒计）来调用函数或计算表达式。
+                 clearInterval() 	取消由 setInterval() 设置的 timeout。
+            3：属性
+                   获取其他对象的bom对象
+                   history 	对 History 对象的只读引用。请参数 History 对象。
+                   location 	用于窗口或框架的 Location 对象。请参阅 Location 对象。
+                    Navigator 	对 Navigator 对象的只读引用。请参数 Navigator 对象。
+                    Screen 	对 Screen 对象的只读引用。请参数 Screen 对象。
+
+            4：特点
+                Window 对象可以不需要创建 直接调用即可 */
+
+/*     alert("大哥啊");
+     var b = confirm("你确定要退出吗？");
+     alert(b);
+     var prompt2 = prompt();
+     alert(prompt2);*/
+
+    </script>
+</head>
+<body>
+<!--    <input type="button"id="openBtn" value="打开一个新窗口">
+    <input type="button" id="closeBtn" value="关闭一个新窗口">-->
+    <script>
+/*        var byId = document.getElementById("openBtn");
+        var open2;
+        byId.onclick = function () {
+            //打开新窗口
+            open2 = open();
+        }
+        var byId = document.getElementById("closeBtn");
+        byId.onclick = function () {
+            //关闭新窗口
+            open2.close();
+        }*/
+        //一次性定时器
+        var timeout = setTimeout(fun,3000);
+        clearTimeout(timeout);
+        function fun(){
+            alert('boom---');
+        }
+        //循环定时器
+        setInterval(fun,2000)
+    </script>
+</body>
+</html>
